@@ -7,9 +7,13 @@ import numpy as np
 import warnings
 import os
 import re
+import sys
 
 # Suppress warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+# Print Python version for debugging
+print(f"Python version: {sys.version}")
 
 # Try to import scipy modules with fallbacks
 try:
@@ -18,6 +22,7 @@ try:
     from scipy.spatial.distance import pdist, squareform
     from scipy.stats import describe
     SCIPY_AVAILABLE = True
+    print("Scipy imported successfully")
 except ImportError as e:
     print(f"Warning: Some scipy modules not available: {e}")
     SCIPY_AVAILABLE = False
@@ -38,7 +43,7 @@ except ImportError as e:
 
 app = Flask(__name__)
 
-# The HTML template remains the same (included in the full code below)
+# The HTML template
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="en">
